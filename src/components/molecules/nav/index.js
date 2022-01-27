@@ -1,5 +1,7 @@
-import Menu from './Menu';
+import NavMenu from './Menu';
+import NavLogo from './Logo';
 
 export {
-  Menu,
+  NavMenu,
+  NavLogo,
 };
