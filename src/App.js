@@ -2,7 +2,7 @@ import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
 import routes from 'routes';
-import './App.css';
+// import './App.css';
 
 function App() {
   return (
