@@ -1,5 +1,7 @@
-import Link from './Link';
+import NavWrapper from './Wrapper';
+import NavLink from './Link';
 
 export {
-  Link
+  NavWrapper,
+  NavLink
 };
