@@ -14,7 +14,7 @@ export default function Header({ title, subtitle }) {
         { title }
       </HeadingTwo>
       <HeadingThree>
-        { subtitle }
+        ({ subtitle })
       </HeadingThree>
     </FlexContainer>
   )

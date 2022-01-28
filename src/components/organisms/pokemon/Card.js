@@ -15,14 +15,14 @@ export default function Header({ header, image }) {
         direction="column"
         gap="10px"
       >
+        <PokemonHeader
+          title={header.title}
+          subtitle={header.subtitle}
+        />
         <BaseImage
           src={image.src}
           alt={image.alt}
           width="250px"
-        />
-        <PokemonHeader
-          title={header.title}
-          subtitle={header.subtitle}
         />
       </FlexContainer>
     </BaseCard>
