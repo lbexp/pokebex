@@ -5,9 +5,11 @@ import { AnchorWrapper } from 'components/atoms/anchor';
 import { FlexContainer } from 'components/atoms/container';
 import { PokemonHeader } from 'components/molecules/pokemon';
 
-export default function Card({ id, header, image }) {
+export default function Card({ header, image }) {
   return (
-    <AnchorWrapper href={`/pokemon/${id}`}>
+    <AnchorWrapper 
+      href={`/pokemon/${header.title}`}
+    >
       <BaseCard
         padding="10px"
       >

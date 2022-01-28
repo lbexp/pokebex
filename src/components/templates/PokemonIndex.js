@@ -25,7 +25,6 @@ export default function PokemonIndex({ navbar, items }) {
               { items.data?.map((item) => (
                 <PokemonCard
                   key={item.id}
-                  id={item.id}
                   header={{ title: item.name, subtitle: '0 Owned' }}
                   image={{ src: item.image, alt: item.name }}
                 />
