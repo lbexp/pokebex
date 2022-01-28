@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-function Flex({ children, align, justify, gap, direction }) {
+function Flex({ children, padding, align, justify, gap, direction }) {
   return (
     <div
       css={css`
+        padding: ${padding};
         display: flex;
         flex-direction: ${direction};
         gap: ${gap};
@@ -18,6 +19,7 @@ function Flex({ children, align, justify, gap, direction }) {
 };
 
 Flex.defaultProps = {
+  padding: "0px",
   direction: 'row',
   align: 'start',
   justify: 'center',
