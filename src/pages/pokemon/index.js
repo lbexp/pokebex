@@ -1,5 +1,5 @@
 import React from 'react';
-import PokemonIndex from 'components/templates/PokemonIndex';
+import PokemonIndex from 'components/templates/pokemon';
 import PokemonLogo from 'assets/images/pokemon_logo.png';
 import { useQuery } from "@apollo/client";
 import { GET_POKEMONS } from 'graphql/get-pokemons';
