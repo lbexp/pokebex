@@ -7,7 +7,7 @@ export default function Header({ title, subtitle }) {
     <FlexContainer
       align="center"
       justify="center"
-      gap="15px"
+      gap="5px"
       direction="column"
     >
       <HeadingTwo>
