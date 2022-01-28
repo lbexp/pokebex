@@ -5,7 +5,7 @@ export default function HeadingTwo({ children }) {
   return (
     <h2
       css={css`
-        color: #ffcc01;
+        color: #385ca9;
       `}
     >
       { children }
