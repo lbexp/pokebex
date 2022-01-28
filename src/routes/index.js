@@ -8,7 +8,7 @@ const routes = [
     component: PokemonIndex,
   },
   {
-    path: '/:id',
+    path: '/pokemon/:id',
     component: PokemonShow,
   },
   {
