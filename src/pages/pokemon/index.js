@@ -12,6 +12,11 @@ export default function Index() {
           { href: '/my-pokemon', children: 'Collection' },
         ]
       }}
+      items={[
+        { title: 'Geodude', subtitle: 'Dude', img: { src: PokemonLogo, alt: 'Geodude' } },
+        { title: 'Geodude', subtitle: 'Dude', img: { src: PokemonLogo, alt: 'Geodude' } },
+        { title: 'Geodude', subtitle: 'Dude', img: { src: PokemonLogo, alt: 'Geodude' } },
+      ]}
     />
   )
 };
