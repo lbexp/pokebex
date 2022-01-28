@@ -12,14 +12,24 @@ export default function PokemonIndex({ navbar, items }) {
           logo={navbar.logo}
           menus={navbar.menus}
         />
-      </header>
-      <main style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      </header> 
+      <main 
+        style={
+          items.loading ? { 
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          } 
+          : null
+        }
+      >
         {
           items.loading ?
             <Loader />
           :
             <GridContainer
-              padding="20px 15px"
+              padding="20px"
               gap="15px"
             >
               { items.data?.map((item) => (
