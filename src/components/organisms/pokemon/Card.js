@@ -18,8 +18,7 @@ export default function Header({ header, image }) {
         <BaseImage
           src={image.src}
           alt={image.alt}
-          width="200px"
-          // height="400px"
+          width="250px"
         />
         <PokemonHeader
           title={header.title}
