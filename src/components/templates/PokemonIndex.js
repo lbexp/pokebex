@@ -13,18 +13,23 @@ export default function PokemonIndex({ navbar, items }) {
         />
       </header>
       <main>
-        <GridContainer
-          padding="20px 15px"
-          gap="15px"
-        >
-          { items.map((item, index) => (
-            <PokemonCard
-              key={index}
-              header={{ title: item.title, subtitle: item.subtitle }}
-              image={{ src: item.img.src, alt: item.img.alt }}
-            />
-          ))}
-        </GridContainer>
+        {
+          items.loading ?
+            <p>Loading...</p>
+          :
+            <GridContainer
+              padding="20px 15px"
+              gap="15px"
+            >
+              { items.data?.map((item, index) => (
+                <PokemonCard
+                  key={index}
+                  header={{ title: item.name, subtitle: item.nickname }}
+                  image={{ src: item.image, alt: item.name }}
+                />
+              ))}
+            </GridContainer>
+        }
       </main>
     </>
   )
