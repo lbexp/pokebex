@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-function Grid({ children, align, justify, column, gap }) {
+function Grid({ children, padding, margin, column, gap }) {
   return (
     <div
       css={css`
+        padding: ${padding};
+        margin: ${margin};
         display: grid;
         gap: ${gap};
         grid-template-columns: ${column};
@@ -16,6 +18,8 @@ function Grid({ children, align, justify, column, gap }) {
 };
 
 Grid.defaultProps = {
+  padding: '0px',
+  margin: '0px',
   column: '',
   gap: '0px',
 };
