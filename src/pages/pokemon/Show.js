@@ -56,6 +56,7 @@ function Show() {
       await pokebexIdb.pokemons.add({
         name,
         nickname: pokemonNickname,
+        image: data?.pokemon.sprites.front_default,
       });
     } catch(error) {
       console.log('Error idb insert', error);
