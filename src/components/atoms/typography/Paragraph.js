@@ -3,12 +3,12 @@ import { css } from '@emotion/react';
 
 export default function HeadingTwo({ children }) {
   return (
-    <paragraph
+    <p
       css={css`
         color: #616161;
       `}
     >
       { children }
-    </paragraph>
+    </p>
   )
 };
