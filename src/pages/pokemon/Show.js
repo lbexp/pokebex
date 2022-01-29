@@ -10,6 +10,7 @@ function Show() {
   const [isInCatchMode, setIsInCatchMode] = useState(false);
   const [isCatching, setIsCatching] = useState(false);
   const [catchStatus, setCatchStatus] = useState(null);
+  const [pokemonNickname, setPokemonNickname] = useState('');
 
   const { loading, error, data } = useQuery(SHOW_POKEMONS, {
     variables: { name: name },
@@ -21,15 +22,17 @@ function Show() {
 
   const cancelCatch = () => {
     setIsInCatchMode(false);
+    setIsCatching(false);
+    setCatchStatus(null);
   };
 
   const catchPokemon = () => {
-    const isSuccess = Math.random() * 100;
+    const chanceNumber = Math.random() * 100;
     setIsCatching(true);
     console.log('Catching...');
 
     setTimeout(() => {
-      if (isSuccess > 50) {
+      if (chanceNumber > 50) {
         setIsCatching(false);
         setCatchStatus('Catched');
         console.log('Success');
@@ -39,6 +42,17 @@ function Show() {
         console.log('Fail');
       }
     }, 2000);
+  };
+
+  const setNickname = (event) => {
+    setPokemonNickname(event.target.value);
+  };
+
+  const savePokemon = (event) => {
+    event.preventDefault();
+    console.log('saving..')
+    console.log(pokemonNickname);
+    cancelCatch();
   };
 
   return (
@@ -55,6 +69,9 @@ function Show() {
             isCatching={isCatching}
             catchStatus={catchStatus}
             catchEvent={catchPokemon}
+            saveEvent={savePokemon}
+            nickname={pokemonNickname}
+            setNickname={setNickname}
             cancelEvent={cancelCatch}
           />
         :

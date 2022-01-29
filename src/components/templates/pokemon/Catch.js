@@ -5,8 +5,9 @@ import { BaseContainer, FlexContainer } from 'components/atoms/container';
 import { BaseButton } from 'components/atoms/button';
 import { BaseImage } from 'components/atoms/image';
 import { Paragraph } from 'components/atoms/typography';
+import { FormWrapper, FormInput } from 'components/atoms/form';
 
-export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEvent, cancelEvent }) {
+export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEvent, saveEvent, cancelEvent, nickname, setNickname }) {
   return (
     <>
       <main 
@@ -48,16 +49,41 @@ export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEv
               </BaseContainer>
               { isCatching ? 
                   <Loader />
-                :
+                : catchStatus === null && !isCatching ?
                   <BaseButton
-                    type="primary"
+                    styleType="primary"
                     clickEvent={catchEvent}
                   >
                     Catch
                   </BaseButton>
+                : catchStatus === 'Catched' && !isCatching ?
+                  <FormWrapper
+                    submitEvent={saveEvent}
+                  >
+                    <FlexContainer
+                      direction="column"
+                      justify="center"
+                      align="center"
+                      gap="10px"
+                    >
+                      <FormInput
+                        placeholder="Pokemon's Nickname"
+                        value={nickname}
+                        changeEvent={setNickname}
+                        required={true}
+                      />
+                      <BaseButton
+                        type="submit"
+                        styleType="primary"
+                      >
+                        Submit
+                      </BaseButton>
+                    </FlexContainer>
+                  </FormWrapper>
+                : null
               }
               <BaseButton
-                type="secondary"
+                styleType="secondary"
                 clickEvent={cancelEvent}
               >
                 Back
