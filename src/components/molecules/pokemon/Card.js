@@ -5,7 +5,7 @@ import { BaseButton } from 'components/atoms/button';
 import { FlexContainer } from 'components/atoms/container';
 import { PokemonHeader } from 'components/molecules/pokemon';
 
-export default function Card({ header, image, action }) {
+export default function Card({ id, header, image, action }) {
   return (
     <BaseCard
       padding="10px"
@@ -30,7 +30,7 @@ export default function Card({ header, image, action }) {
               styleType="primary"
               clickEvent={(event) => {
                 event.preventDefault();
-                action?.release(header.title);
+                action?.release(id);
               }}
             >
               Release

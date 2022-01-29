@@ -15,6 +15,7 @@ export default function Cards({ data }) {
           href={`/pokemon/${item.header.title}`}
         >
           <PokemonCard
+            id={item.id}
             header={item.header}
             image={item.image}
             action={item.action}

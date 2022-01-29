@@ -8,8 +8,8 @@ function Index() {
   const [error, setError] = useState(null);
   const [catchedPokemons, setCatchedPokemons] = useState([]);
 
-  const releasePokemon = (name) => {
-    console.log(name);
+  const releasePokemon = (catchedId) => {
+    pokebexIdb.pokemons.delete(catchedId);
   };
 
   useLiveQuery(async() => {
@@ -18,6 +18,7 @@ function Index() {
       const queryPokemons =  await pokebexIdb.pokemons.toArray();
       setCatchedPokemons(
         queryPokemons.map((item) => ({
+          id: item.id,
           title: item.name,
           subtitle: item.nickname,
           image: item.image,
