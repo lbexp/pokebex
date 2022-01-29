@@ -4,6 +4,7 @@ import PokemonShow from 'components/templates/pokemon/Show';
 import PokemonCatch from 'components/templates/pokemon/Catch';
 import { useQuery } from "@apollo/client";
 import { SHOW_POKEMONS } from 'graphql/show-pokemon';
+import { pokebexIdb } from 'data/pokebex-idb';
 
 function Show() {
   const { name } = useParams();
@@ -48,10 +49,18 @@ function Show() {
     setPokemonNickname(event.target.value);
   };
 
-  const savePokemon = (event) => {
+  const savePokemon = async(event) => {
     event.preventDefault();
-    console.log('saving..')
-    console.log(pokemonNickname);
+
+    try {
+      await pokebexIdb.pokemons.add({
+        name,
+        nickname: pokemonNickname,
+      });
+    } catch(error) {
+      console.log('Error idb insert', error);
+    };
+
     cancelCatch();
   };
 
