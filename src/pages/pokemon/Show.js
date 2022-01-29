@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
 import { useParams } from "react-router-dom";
-import PokemonShow from 'components/templates/pokemon/Show';
-import PokemonCatch from 'components/templates/pokemon/Catch';
 import { useQuery } from "@apollo/client";
 import { SHOW_POKEMONS } from 'graphql/show-pokemon';
 import { pokebexIdb } from 'data/pokebex-idb';
+import PokemonShow from 'components/templates/pokemon/Show';
+import PokemonCatch from 'components/templates/pokemon/Catch';
 
 function Show() {
   const { name } = useParams();
@@ -16,6 +17,34 @@ function Show() {
   const { loading, error, data } = useQuery(SHOW_POKEMONS, {
     variables: { name: name },
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [idbError, setIdbError] = useState(null);
+  const [pokemon, setPokemon] = useState([]);
+
+  useLiveQuery(async() => {
+    try {
+      setIsLoading(true);
+      if (!loading && data) {        
+        const catchedAmount = await pokebexIdb.pokemons
+          .where('name')
+          .equals(data?.pokemon.name)
+          .count();
+
+        setPokemon({
+          name: data?.pokemon.name,
+          image: data?.pokemon.sprites.front_default,
+          types: data?.pokemon.types.map((type) => type.type.name),
+          moves: data?.pokemon.moves.map((move) => move.move.name),
+          catched: catchedAmount,
+        });
+        setIsLoading(false);
+      }
+    } catch(error) {
+      setIdbError(error);
+      setIsLoading(false);
+    }
+  }, [data]);
   
   const startCatch = () => {
     setIsInCatchMode(true);
@@ -30,17 +59,14 @@ function Show() {
   const catchPokemon = () => {
     const chanceNumber = Math.random() * 100;
     setIsCatching(true);
-    console.log('Catching...');
 
     setTimeout(() => {
       if (chanceNumber > 50) {
         setIsCatching(false);
         setCatchStatus('Catched');
-        console.log('Success');
       } else {
         setIsCatching(false);
         setCatchStatus('Fled');
-        console.log('Fail');
       }
     }, 2000);
   };
@@ -93,19 +119,19 @@ function Show() {
               ]
             }}
             item={{
-              loading: loading,
-              error: error,
+              loading: isLoading,
+              error: error || idbError,
               data: {
                 header: {
-                  title: data?.pokemon.name,
-                  subtitle: '0 Owned'
+                  title: pokemon.name,
+                  subtitle: `${pokemon.catched} Owned`,
                 },
                 image: {
-                  src: data?.pokemon.sprites.front_default,
-                  alt: data?.pokemon.name
+                  src: pokemon.image,
+                  alt: pokemon.name,
                 },
-                types: data?.pokemon.types.map((type) => type.type.name),
-                moves: data?.pokemon.moves.map((move) => move.move.name)
+                types: pokemon.types,
+                moves: pokemon.moves,
               }
             }}
             floatEvent={startCatch}
