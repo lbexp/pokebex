@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-export default function Input({value, placeholder }) {
+export default function Input({value, placeholder, required }) {
   return (
     <input
       css={css`
@@ -12,6 +12,7 @@ export default function Input({value, placeholder }) {
       `}
       value={value}
       placeholder={placeholder}
+      required={required}
     />
   )
 };
