@@ -6,7 +6,7 @@ import { FloatButton } from 'components/atoms/button';
 import PokemonLogo from 'assets/images/pokemon_logo.png';
 import PokeballIcon from 'assets/images/pokeball_icon.png';
 
-export default function PokemonIndex({ navbar, item }) {
+export default function PokemonIndex({ navbar, item, floatEvent }) {
   return (
     <>
       <header>
@@ -26,17 +26,20 @@ export default function PokemonIndex({ navbar, item }) {
           : null
         }
       >
-        {
-          item.loading ?
+        { item.loading ?
             <Loader />
           :
             <>
               <PokemonDetail
                 data={item.data}
               />
-              <FloatButton
-                img={PokeballIcon}
-              />
+              { floatEvent ?
+                  <FloatButton
+                    img={PokeballIcon}
+                    clickEvent={floatEvent}
+                  />
+                : null
+              }
             </>
         }
       </main>
