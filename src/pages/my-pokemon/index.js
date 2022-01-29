@@ -12,7 +12,7 @@ function Index() {
     try {
       setIsLoading(true);
       const queryPokemons =  await pokebexIdb.pokemons.toArray();
-      setCatchedPokemons(queryPokemons);
+      setCatchedPokemons(queryPokemons.map((item) => ({ title: item.name, subtitle: item.nickname, image: item.image })));
       setIsLoading(false);
     } catch(error) {
       setError(error);
