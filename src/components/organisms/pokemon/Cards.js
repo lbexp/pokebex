@@ -11,10 +11,10 @@ export default function Cards({ data }) {
     >
       { data.map((item, index) => (
         <AnchorWrapper 
+          key={index}
           href={`/pokemon/${item.header.title}`}
         >
           <PokemonCard
-            key={index}
             header={item.header}
             image={item.image}
           />
