@@ -5,7 +5,7 @@ export default function HeadingTwo({ children }) {
   return (
     <paragraph
       css={css`
-        color: #ffcc01;
+        color: #616161;
       `}
     >
       { children }
