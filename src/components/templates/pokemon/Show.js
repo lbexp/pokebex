@@ -27,7 +27,9 @@ export default function PokemonIndex({ navbar, item }) {
           item.loading ?
             <Loader />
           :
-            <PokemonDetail />
+            <PokemonDetail
+              data={item.data}
+            />
         }
       </main>
     </>
