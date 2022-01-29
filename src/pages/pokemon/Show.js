@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 import PokemonShow from 'components/templates/pokemon/Show';
-import PokemonLogo from 'assets/images/pokemon_logo.png';
 import { useQuery } from "@apollo/client";
 import { SHOW_POKEMONS } from 'graphql/show-pokemon';
 
@@ -14,7 +13,6 @@ function Show() {
   return (
     <PokemonShow
       navbar={{
-        logo: { href: '/', src: PokemonLogo, width: 125, height: null },
         menus: [
           { href: '/', children: 'List' },
           { href: '/my-pokemon', children: 'Collection' },

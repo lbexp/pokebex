@@ -2,13 +2,14 @@ import React from 'react';
 import { Navbar } from 'components/organisms/navbar';
 import { PokemonCards } from 'components/organisms/pokemon';
 import { Loader } from 'components/atoms/loader';
+import PokemonLogo from 'assets/images/pokemon_logo.png';
 
 export default function PokemonIndex({ navbar, items }) {
   return (
     <>
       <header>
         <Navbar
-          logo={navbar.logo}
+          logo={{ href: '/', src: PokemonLogo, width: 125, height: null }}
           menus={navbar.menus}
         />
       </header> 

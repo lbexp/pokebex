@@ -3,6 +3,7 @@ import { Loader } from 'components/atoms/loader';
 import { Navbar } from 'components/organisms/navbar';
 import { PokemonDetail } from 'components/organisms/pokemon';
 import { FloatButton } from 'components/atoms/button';
+import PokemonLogo from 'assets/images/pokemon_logo.png';
 import PokeballIcon from 'assets/images/pokeball_icon.png';
 
 export default function PokemonIndex({ navbar, item }) {
@@ -10,7 +11,7 @@ export default function PokemonIndex({ navbar, item }) {
     <>
       <header>
         <Navbar
-          logo={navbar.logo}
+          logo={{ href: '/', src: PokemonLogo, width: 125, height: null }}
           menus={navbar.menus}
         />
       </header>
