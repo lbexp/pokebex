@@ -1,6 +1,6 @@
 import React from 'react';
 import { Loader } from 'components/atoms/loader';
-import Navbar from 'components/organisms/navbar';
+import { Navbar } from 'components/organisms/navbar';
 import { PokemonDetail } from 'components/organisms/pokemon'
 
 export default function PokemonIndex({ navbar, item }) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from 'components/organisms/navbar';
+import { Navbar } from 'components/organisms/navbar';
 import { PokemonCard } from 'components/organisms/pokemon';
 import { GridContainer } from 'components/atoms/container';
 import { Loader } from 'components/atoms/loader';
