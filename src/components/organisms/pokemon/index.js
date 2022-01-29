@@ -1,7 +1,7 @@
-import PokemonCard from './Card';
+import PokemonCards from './Cards';
 import PokemonDetail from './Detail';
 
 export {
-  PokemonCard,
+  PokemonCards,
   PokemonDetail,
 };
