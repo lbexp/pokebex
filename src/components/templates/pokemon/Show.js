@@ -1,7 +1,9 @@
 import React from 'react';
 import { Loader } from 'components/atoms/loader';
 import { Navbar } from 'components/organisms/navbar';
-import { PokemonDetail } from 'components/organisms/pokemon'
+import { PokemonDetail } from 'components/organisms/pokemon';
+import { FloatButton } from 'components/atoms/button';
+import PokeballIcon from 'assets/images/pokeball_icon.png';
 
 export default function PokemonIndex({ navbar, item }) {
   return (
@@ -27,9 +29,14 @@ export default function PokemonIndex({ navbar, item }) {
           item.loading ?
             <Loader />
           :
-            <PokemonDetail
-              data={item.data}
-            />
+            <>
+              <PokemonDetail
+                data={item.data}
+              />
+              <FloatButton
+                img={PokeballIcon}
+              />
+            </>
         }
       </main>
     </>
