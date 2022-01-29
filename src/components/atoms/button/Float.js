@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-export default function Float({ children, img }) {
+export default function Float({ children, img, clickEvent }) {
   return (
-    <label
+    <button
       css={css`
         font-size: 18px;
         position: fixed;
@@ -15,7 +15,7 @@ export default function Float({ children, img }) {
             background-repeat: no-repeat;
             background-size: 55px 55px;`
           :
-            'background: #ffcc01;'
+            'background: #385ca9;'
         }
         color: white;
         border: 0;
@@ -27,8 +27,9 @@ export default function Float({ children, img }) {
         align-items: center;
         justify-content: center;
       `}
+      onClick={clickEvent}
     >
       { children }
-    </label>
+    </button>
   );
 };
