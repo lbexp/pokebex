@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-function Base({ children, type, clickEvent }) {
+function Base({ children, type, styleType, clickEvent }) {
   const styles = {
     primary: {
       background: '#385ca9',
@@ -18,11 +18,12 @@ function Base({ children, type, clickEvent }) {
       css={css`
         font-size: 18px;
         padding: 15px;
-        background: ${styles[type].background};
-        color: ${styles[type].color};
+        background: ${styles[styleType].background};
+        color: ${styles[styleType].color};
         border-radius: 5px;
         width: 100%;
       `}
+      type={type}
       onClick={clickEvent}
     >
       { children }
@@ -31,7 +32,8 @@ function Base({ children, type, clickEvent }) {
 };
 
 Base.defaultProps = {
-  type: 'primary',
+  type: 'button',
+  styleType: 'primary',
 };
 
 export default Base;
