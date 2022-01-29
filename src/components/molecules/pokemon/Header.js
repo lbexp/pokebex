@@ -13,9 +13,12 @@ export default function Header({ title, subtitle }) {
       <HeadingTwo>
         { title }
       </HeadingTwo>
-      <HeadingThree>
-        ({ subtitle })
-      </HeadingThree>
+      
+      { subtitle ?
+        <HeadingThree>
+          ({ subtitle })
+        </HeadingThree>
+      : null }
     </FlexContainer>
   )
 };
