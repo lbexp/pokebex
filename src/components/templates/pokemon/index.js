@@ -32,7 +32,8 @@ export default function PokemonIndex({ navbar, items }) {
               data={
                 items.data?.map((item) => ({
                   header: { title: item.title, subtitle: item.subtitle },
-                  image: { src: item.image, alt: item.title }
+                  image: { src: item.image, alt: item.title },
+                  action: { release: item.action?.release },
                 }))
               }
             />

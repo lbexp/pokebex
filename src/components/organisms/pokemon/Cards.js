@@ -17,6 +17,7 @@ export default function Cards({ data }) {
           <PokemonCard
             header={item.header}
             image={item.image}
+            action={item.action}
           />
         </AnchorWrapper>
       ))}

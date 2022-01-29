@@ -8,11 +8,24 @@ function Index() {
   const [error, setError] = useState(null);
   const [catchedPokemons, setCatchedPokemons] = useState([]);
 
+  const releasePokemon = (name) => {
+    console.log(name);
+  };
+
   useLiveQuery(async() => {
     try {
       setIsLoading(true);
       const queryPokemons =  await pokebexIdb.pokemons.toArray();
-      setCatchedPokemons(queryPokemons.map((item) => ({ title: item.name, subtitle: item.nickname, image: item.image })));
+      setCatchedPokemons(
+        queryPokemons.map((item) => ({
+          title: item.name,
+          subtitle: item.nickname,
+          image: item.image,
+          action: {
+            release: releasePokemon,
+          },
+        }))
+      );
       setIsLoading(false);
     } catch(error) {
       setError(error);
