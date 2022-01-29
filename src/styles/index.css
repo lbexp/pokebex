@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #222831;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+button {
+  min-width: 44px;
+  min-height: 44px;
+  border: unset;
+  background-color: unset;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+p {
+  word-break: break-word;
+}
