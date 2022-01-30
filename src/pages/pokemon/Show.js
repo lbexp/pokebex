@@ -13,6 +13,7 @@ function Show() {
   const [isCatching, setIsCatching] = useState(false);
   const [catchStatus, setCatchStatus] = useState(null);
   const [pokemonNickname, setPokemonNickname] = useState('');
+  const [pokemonSaveError, setPokemonSaveError] = useState(null);
 
   const { loading, error, data } = useQuery(SHOW_POKEMONS, {
     variables: { name: name },
@@ -79,16 +80,25 @@ function Show() {
     event.preventDefault();
 
     try {
-      await pokebexIdb.pokemons.add({
-        name,
-        nickname: pokemonNickname,
-        image: data?.pokemon.sprites.front_default,
-      });
-    } catch(error) {
-      console.log('Error idb insert', error);
-    };
+      const isNicknameTaken = await pokebexIdb.pokemons
+        .where('nickname')
+        .equals(pokemonNickname)
+        .count();
 
-    cancelCatch();
+      if (!isNicknameTaken) {
+        await pokebexIdb.pokemons.add({
+          name,
+          nickname: pokemonNickname,
+          image: data?.pokemon.sprites.front_default,
+        });
+
+        cancelCatch();
+      } else {
+        setPokemonSaveError('Nickname is already taken!');
+      }
+    } catch(error) {
+      setPokemonSaveError('Failed to save the pokemon.');
+    };
   };
 
   return (
@@ -109,6 +119,7 @@ function Show() {
             nickname={pokemonNickname}
             setNickname={setNickname}
             cancelEvent={cancelCatch}
+            catchError={pokemonSaveError}
           />
         :
           <PokemonShow

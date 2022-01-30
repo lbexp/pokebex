@@ -7,7 +7,7 @@ import { BaseImage } from 'components/atoms/image';
 import { Paragraph } from 'components/atoms/typography';
 import { FormWrapper, FormInput } from 'components/atoms/form';
 
-export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEvent, saveEvent, cancelEvent, nickname, setNickname }) {
+export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEvent, saveEvent, cancelEvent, nickname, setNickname, catchError }) {
   return (
     <>
       <main 
@@ -47,6 +47,14 @@ export default function PokemonCatch({ pokemon, isCatching, catchStatus, catchEv
                   }
                 </Paragraph>
               </BaseContainer>
+              { catchError ?
+                  <BaseContainer>
+                    <Paragraph>
+                      { catchError }
+                    </Paragraph>
+                  </BaseContainer>
+                : null
+              }
               { isCatching ? 
                   <Loader />
                 : catchStatus === null && !isCatching ?
