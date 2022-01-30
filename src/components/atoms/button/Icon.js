@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-function Icon({ children, type, clickEvent }) {
+function Icon({ children, type, clickEvent, disabled }) {
   return (
     <button
       css={css`
@@ -12,6 +12,7 @@ function Icon({ children, type, clickEvent }) {
       `}
       type={type}
       onClick={clickEvent}
+      disabled={disabled}
     >
       { children }
     </button>
