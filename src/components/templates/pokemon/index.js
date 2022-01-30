@@ -6,7 +6,7 @@ import { PokemonCards } from 'components/organisms/pokemon';
 import { Loader } from 'components/atoms/loader';
 import PokemonLogo from 'assets/images/pokemon_logo.png';
 
-export default function PokemonIndex({ navbar, items }) {
+export default function PokemonIndex({ title, navbar, items }) {
   return (
     <>
       <header>
@@ -27,7 +27,7 @@ export default function PokemonIndex({ navbar, items }) {
           <HeadingOne
             align="center"
           >
-            Pokemon List
+            { title }
           </HeadingOne>
         </BaseContainer>
         {

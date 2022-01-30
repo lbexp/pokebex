@@ -38,6 +38,7 @@ function Index() {
 
   return (
     <PokemonIndex
+      title="Pokemon List"
       navbar={{
         menus: [
           { href: '/', children: 'List' },
