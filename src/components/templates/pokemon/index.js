@@ -1,5 +1,7 @@
 import React from 'react';
+import { BaseContainer } from 'components/atoms/container';
 import { Navbar } from 'components/organisms/navbar';
+import { HeadingOne } from 'components/atoms/typography';
 import { PokemonCards } from 'components/organisms/pokemon';
 import { Loader } from 'components/atoms/loader';
 import PokemonLogo from 'assets/images/pokemon_logo.png';
@@ -14,19 +16,32 @@ export default function PokemonIndex({ navbar, items }) {
         />
       </header> 
       <main 
-        style={
-          items.loading ? { 
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          } 
-          : null
+        style={{
+            padding: '25px'
+          }
         }
       >
+        <BaseContainer
+          margin="0px 0px 25px 0px"
+        >
+          <HeadingOne
+            align="center"
+          >
+            Pokemon List
+          </HeadingOne>
+        </BaseContainer>
         {
           items.loading ?
-            <Loader />
+            <div
+              style={{ 
+                textAlign: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Loader />
+            </div>
           :
             <PokemonCards
               data={

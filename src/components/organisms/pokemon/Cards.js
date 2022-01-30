@@ -6,7 +6,6 @@ import { PokemonCard } from 'components/molecules/pokemon';
 export default function Cards({ data }) {
   return (
     <GridContainer
-      padding="20px"
       gap="15px"
     >
       { data.map((item, index) => (
