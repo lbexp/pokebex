@@ -6,8 +6,10 @@ import { pokebexIdb } from 'data/pokebex-idb';
 import { GET_POKEMONS } from 'graphql/get-pokemons';
 
 function Index() {
+  const LIMIT_GRAPH_DATA = 10;
+  const [graphDataOffset, setGraphDataOffset] = useState(0);
   const { loading: graphLoading, error: graphError, data: graphData } = useQuery(GET_POKEMONS, {
-    variables: { limit: 10, offset: 1 },
+    variables: { limit: LIMIT_GRAPH_DATA, offset: graphDataOffset },
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -36,8 +38,17 @@ function Index() {
     }
   }, [graphData]);
 
+  const getNextPokemonPage = () => {
+    setGraphDataOffset(graphDataOffset + LIMIT_GRAPH_DATA);
+  };
+
+  const getPrevPokemonPage = () => {
+    setGraphDataOffset(graphDataOffset - LIMIT_GRAPH_DATA);
+  }
+
   return (
     <PokemonIndex
+      title="Pokemon List"
       navbar={{
         menus: [
           { href: '/', children: 'List' },
@@ -45,6 +56,12 @@ function Index() {
         ]
       }}
       items={{ loading: isLoading, error: (error || graphError), data: pokemons }}
+      pagination={{
+        currentPage: graphDataOffset / LIMIT_GRAPH_DATA + 1,
+        totalPage: Math.round(graphData?.pokemons.count / LIMIT_GRAPH_DATA),
+        nextPageEvent: getNextPokemonPage,
+        prevPageEvent: getPrevPokemonPage,
+      }}
     />
   )
 };

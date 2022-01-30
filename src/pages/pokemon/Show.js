@@ -124,7 +124,7 @@ function Show() {
               data: {
                 header: {
                   title: pokemon.name,
-                  subtitle: `${pokemon.catched} Owned`,
+                  subtitle: `${pokemon.catched} Catched`,
                 },
                 image: {
                   src: pokemon.image,
